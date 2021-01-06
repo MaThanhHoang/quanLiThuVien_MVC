@@ -1,0 +1,40 @@
+﻿@model LibraryManagerSystem.Models.issuebook
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+    <h1> Mượn sách thành công </h1>
+    <table class="table">
+        <tr>
+            <th>
+                Tên người mượn
+            </th>
+            <th>
+                Tên sách mượn
+            </th>
+            <th>
+                Ngày mượn
+            </th>
+        </tr>
+        @if (Model != null)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.name_member)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.book_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.issuedate)
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h1> Mượn sách thất bại vì số lượng sách trong kho đã hết! </h1>
+}

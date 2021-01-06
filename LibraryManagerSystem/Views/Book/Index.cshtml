@@ -1,0 +1,97 @@
+﻿@model IEnumerable<LibraryManagerSystem.Models.book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh mục sách</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    <input type="button"
+           class="btn btn-success"
+           value="Create New"
+           onclick="location.href='@Url.Action("Create", "Book")'" />
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.book_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contents)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pages)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.edition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category.catname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.publisher.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.book_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contents)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pages)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.edition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.author.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category.catname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.publisher.name)
+        </td>
+        <td>
+            <input type="button"
+                   class="btn btn-primary"
+                   value="Edit"
+                   onclick="location.href='@Url.Action("Edit", "Book", new { id = item.id })'" />
+            <input type="button"
+                   class="btn btn-info"
+                   value="Details"
+                   onclick="location.href='@Url.Action("Details", "Book", new { id = item.id })'" />
+            <input type="button"
+                   class="btn btn-danger"
+                   value="Delete"
+                   onclick="location.href='@Url.Action("Delete", "Book", new { id = item.id })'" />
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+        @Html.ActionLink("Details", "Details", new { id=item.id }) |
+        @Html.ActionLink("Delete", "Delete", new { id=item.id })*@
+        </td>
+    </tr>
+}
+
+</table>

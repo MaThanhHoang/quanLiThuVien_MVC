@@ -1,0 +1,67 @@
+﻿@model IEnumerable<LibraryManagerSystem.Models.issuebook>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron text-center">
+    <h1>Tra cứu mượn trả sách đọc giả</h1>
+</div>
+<div class="center-block">
+    @using (Html.BeginForm("Index", "SearchIssue", FormMethod.Get))
+    {
+        <p>
+            Nhập mã sinh viên: @Html.TextBox("memberId") <input type="submit" name="submit" value="Tìm kiếm" /> <input type="submit" name="submit" value="Lọc chưa trả" />
+        </p>
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            Người mượn
+        </th>
+        <th>
+            Tên sách
+        </th>
+        <th>
+            Mã sách
+        </th>
+        <th>
+            Ngày mượn
+        </th>
+        <th>
+            Ngày trả
+        </th>
+        <th>
+            Trạng thái
+        </th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name_member)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.issuedate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.returndate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+

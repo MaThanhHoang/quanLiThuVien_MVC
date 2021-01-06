@@ -1,0 +1,84 @@
+﻿@model IEnumerable<LibraryManagerSystem.Models.book>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron text-center">
+    <h1>Library Management System</h1>
+</div>
+<div class="center-block">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        <p>
+            Nhập mã hoặc tên sách: @Html.TextBox("bookIdOrBookName") <input type="submit" value="Tìm kiếm" /> 
+        </p>
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            Mã sách
+        </th>
+        <th>
+            Tên sách
+        </th>
+        <th>
+            Nội dung
+        </th>
+        <th>
+            Số trang
+        </th>
+        <th>
+            Phiên bản
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Tác giả
+        </th>
+        <th>
+            Thể loại
+        </th>
+        <th>
+            Nhà xuất bản
+        </th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contents)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pages)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.edition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.author.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category.catname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.publisher.name)
+                </td>
+            </tr>
+        }
+    }
+
+</table>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<LibraryManagerSystem.Models.publisher>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh mục nhà xuất bản</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    <input type="button"
+           class="btn btn-success"
+           value="Create New"
+           onclick="location.href='@Url.Action("Create", "Publisher")'" />
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            <input type="button"
+                   class="btn btn-primary"
+                   value="Edit"
+                   onclick="location.href='@Url.Action("Edit", "Publisher", new { id = item.id })'" />
+            <input type="button"
+                   class="btn btn-info"
+                   value="Details"
+                   onclick="location.href='@Url.Action("Details", "Publisher", new { id = item.id })'" />
+            <input type="button"
+                   class="btn btn-danger"
+                   value="Delete"
+                   onclick="location.href='@Url.Action("Delete", "Publisher", new { id = item.id })'" />
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.id })*@ 
+            @*@Html.ActionLink("Details", "Details", new { id = item.id })*@ 
+            @*@Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+        </td>
+    </tr>
+}
+
+</table>
